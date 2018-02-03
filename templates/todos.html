@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>todos</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>{{ title }}</h1>
+      <form action="/todos" method="POST">
+        {% csrf_token %}
+        <input type="text" name="url" />
+        <input type="submit" value="贴入一个严选链接" />
+      </form>
+      <ul>
+        {% for item in items %}
+          {% if item %}
+            <h2>{{ item.title }}</h2>
+            <div><img src="{{ item.url }}" width="400" height="400"></div>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
